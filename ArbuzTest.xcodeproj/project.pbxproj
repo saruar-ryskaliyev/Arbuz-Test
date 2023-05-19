@@ -9,13 +9,13 @@
 /* Begin PBXBuildFile section */
 		7ED5BC432A1629C5002620F4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ED5BC422A1629C5002620F4 /* AppDelegate.swift */; };
 		7ED5BC452A1629C5002620F4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ED5BC442A1629C5002620F4 /* SceneDelegate.swift */; };
-		7ED5BC472A1629C5002620F4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ED5BC462A1629C5002620F4 /* ViewController.swift */; };
 		7ED5BC4A2A1629C5002620F4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7ED5BC482A1629C5002620F4 /* Main.storyboard */; };
 		7ED5BC4C2A1629C7002620F4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7ED5BC4B2A1629C7002620F4 /* Assets.xcassets */; };
 		7ED5BC4F2A1629C7002620F4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7ED5BC4D2A1629C7002620F4 /* LaunchScreen.storyboard */; };
 		7ED5BC572A162CFB002620F4 /* APICaller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ED5BC562A162CFB002620F4 /* APICaller.swift */; };
 		7ED5BC592A162E63002620F4 /* ProductsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ED5BC582A162E63002620F4 /* ProductsData.swift */; };
 		7ED5BC5F2A1641C2002620F4 /* PhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ED5BC5E2A1641C1002620F4 /* PhotoCollectionViewCell.swift */; };
+		7ED5BC602A17B2F4002620F4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ED5BC462A1629C5002620F4 /* ViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -147,7 +147,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7ED5BC472A1629C5002620F4 /* ViewController.swift in Sources */,
+				7ED5BC602A17B2F4002620F4 /* ViewController.swift in Sources */,
 				7ED5BC592A162E63002620F4 /* ProductsData.swift in Sources */,
 				7ED5BC432A1629C5002620F4 /* AppDelegate.swift in Sources */,
 				7ED5BC572A162CFB002620F4 /* APICaller.swift in Sources */,
@@ -307,6 +307,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -335,6 +336,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
