@@ -166,7 +166,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             case .success(let products):
                 self?.products = products
                 self?.viewModels = products.compactMap({
-                    PhotoCollectionViewCellModel(label: $0.name, imageURL: URL(string: $0.photo_url ))
+                    PhotoCollectionViewCellModel(label: $0.name, imageURL: URL(string: $0.photo_url ), price: $0.price)
                    
                 })
                 

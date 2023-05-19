@@ -8,22 +8,26 @@
 import UIKit
 
 
-
-
-
 class PhotoCollectionViewCellModel{
     
     let label: String
     let imageURL: URL?
+    let button: UIButton = UIButton(type: .system)
+    let price: Int
+
     
     var imageData: Data? = nil
+
     
     init(
         label: String,
-        imageURL: URL?
+        imageURL: URL?,
+        price: Int
+
     ){
         self.label = label
         self.imageURL = imageURL
+        self.price = price
     }
     
 }
@@ -33,7 +37,7 @@ class PhotoCollectionViewCell: UICollectionViewCell {
     static let identifier = "PhotoCollectionViewCell"
     
     var imageData: Data? = nil
-    
+    var quantityPressed: Int = 0
     
     private let myImageView: UIImageView = {
         let imageView = UIImageView()
@@ -51,12 +55,35 @@ class PhotoCollectionViewCell: UICollectionViewCell {
     }()
     
     
+    private let myButton: UIButton = {
+        let button = UIButton()
+        
+        button.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
+        button.backgroundColor = .systemGray2
+        button.layer.cornerRadius = 8
+        button.layer.borderWidth = 1
+        
+        return button
+    }()
+    
+    
+    @objc func buttonPressed(){
+        print("button pressed")
+        
+        quantityPressed += 1
+        print(quantityPressed)
+        
+        myButton.setTitle("\(quantityPressed) +", for: .normal)
+        
+
+    }
     
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         contentView.addSubview(myLabel)
         contentView.addSubview(myImageView)
+        contentView.addSubview(myButton)
         contentView.backgroundColor = UIColor(red: 0.93, green: 0.93, blue: 0.93, alpha: 1.00)
         
         contentView.layer.cornerRadius = 8
@@ -70,7 +97,9 @@ class PhotoCollectionViewCell: UICollectionViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        myLabel.frame = CGRect(x: 5, y: contentView.frame.size.height-50, width: contentView.frame.size.height - 10, height: 50)
+        
+        myButton.frame = CGRect(x: 25, y: contentView.frame.size.height - 30, width: contentView.frame.size.height - 45, height: 20)
+        myLabel.frame = CGRect(x: 5, y: contentView.frame.size.height-65, width: contentView.frame.size.height - 10, height: 50)
         myImageView.frame = CGRect(x: 5, y: 0, width: contentView.frame.size.height - 10, height: contentView.frame.size.height - 50)
     }
     
@@ -80,12 +109,17 @@ class PhotoCollectionViewCell: UICollectionViewCell {
         super.prepareForReuse()
         myLabel.text = nil
         myImageView.image = nil
+    
     }
     
+    
+
     
     public func configure(with viewModel: PhotoCollectionViewCellModel){
         myLabel.text = viewModel.label
         
+        myButton.setTitle("\(viewModel.price)₸ +", for: .normal)
+          
         if let data = viewModel.imageData{
             myImageView.image = UIImage(data: data)
         }else if let url = viewModel.imageURL{
@@ -103,5 +137,7 @@ class PhotoCollectionViewCell: UICollectionViewCell {
         }
         
     }
+    
+    
     
 }
