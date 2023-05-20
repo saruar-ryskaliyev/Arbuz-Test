@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import GMStepper
 
 
 class PhotoCollectionViewCellModel{
@@ -37,7 +38,28 @@ class PhotoCollectionViewCell: UICollectionViewCell {
     static let identifier = "PhotoCollectionViewCell"
     
     var imageData: Data? = nil
-    var quantityPressed: Int = 0
+    private var quantity: Int = 0
+    
+    private let MyGMStepper: GMStepper = {
+        let GMstepper = GMStepper()
+        
+
+        GMstepper.isHidden = true
+        GMstepper.buttonsBackgroundColor = UIColor(red: 0.10, green: 0.67, blue: 0.29, alpha: 1.00)
+        GMstepper.labelBackgroundColor = UIColor(red: 0.10, green: 0.67, blue: 0.29, alpha: 1.00)
+        GMstepper.addTarget(self, action: #selector(stepperPressed), for: .valueChanged)
+        GMstepper.minimumValue = 0
+        GMstepper.value = 1
+        GMstepper.borderWidth = 1
+        GMstepper.cornerRadius = 8
+        GMstepper.labelFont = UIFont.systemFont(ofSize: 20)
+    
+        
+        return GMstepper
+    }()
+    
+    
+    
     
     private let myImageView: UIImageView = {
         let imageView = UIImageView()
@@ -59,31 +81,42 @@ class PhotoCollectionViewCell: UICollectionViewCell {
         let button = UIButton()
         
         button.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
-        button.backgroundColor = .systemGray2
+        button.backgroundColor = UIColor(red: 0.10, green: 0.67, blue: 0.29, alpha: 1.00)
         button.layer.cornerRadius = 8
         button.layer.borderWidth = 1
+        
         
         return button
     }()
     
     
     @objc func buttonPressed(){
-        print("button pressed")
-        
-        quantityPressed += 1
-        print(quantityPressed)
-        
-        myButton.setTitle("\(quantityPressed) +", for: .normal)
-        
-
+        myButton.isHidden = true
+        MyGMStepper.isHidden = false
+    
     }
     
+    @objc func stepperPressed(){
+        let num = Int(MyGMStepper.value)
+        
+
+        if num == 0{
+            MyGMStepper.isHidden = true
+            myButton.isHidden = false
+            MyGMStepper.value = 1
+        }
+        
+        quantity = num
+        
+        print(quantity)
+    }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         contentView.addSubview(myLabel)
         contentView.addSubview(myImageView)
         contentView.addSubview(myButton)
+        contentView.addSubview(MyGMStepper)
         contentView.backgroundColor = UIColor(red: 0.93, green: 0.93, blue: 0.93, alpha: 1.00)
         
         contentView.layer.cornerRadius = 8
@@ -97,7 +130,7 @@ class PhotoCollectionViewCell: UICollectionViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        
+        MyGMStepper.frame = CGRect(x: 25, y: contentView.frame.size.height - 30, width: contentView.frame.size.height - 45, height: 20)
         myButton.frame = CGRect(x: 25, y: contentView.frame.size.height - 30, width: contentView.frame.size.height - 45, height: 20)
         myLabel.frame = CGRect(x: 5, y: contentView.frame.size.height-65, width: contentView.frame.size.height - 10, height: 50)
         myImageView.frame = CGRect(x: 5, y: 0, width: contentView.frame.size.height - 10, height: contentView.frame.size.height - 50)
