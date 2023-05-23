@@ -59,7 +59,7 @@ class PhotoCollectionViewCell: UICollectionViewCell {
     
     private let mySmallerLabel: UILabel = {
        let label = UILabel()
-        label.textAlignment = .left
+        label.textAlignment = .center
         label.clipsToBounds = true
         label.font = label.font.withSize(15)
         return label
@@ -81,10 +81,9 @@ class PhotoCollectionViewCell: UICollectionViewCell {
         myButton.isHidden = true
         MyGMStepper.isHidden = false
         viewModel?.quantity = 1
-        
+        mySmallerLabel.text = "kg \(viewModel?.price ?? 0) ₸"
         
         if let viewModel = self.viewModel, viewModel.quantity > 0{
-            print("HI")
             delegate?.saveToCart(viewModel: viewModel)
         }
    
@@ -98,15 +97,18 @@ class PhotoCollectionViewCell: UICollectionViewCell {
             MyGMStepper.isHidden = true
             myButton.isHidden = false
             MyGMStepper.value = 1
+            mySmallerLabel.text = "kg"
             
         }
     
         viewModel?.quantity = num
         
         if let viewModel = self.viewModel, viewModel.quantity > 0{
-            print("HI")
             delegate?.saveToCart(viewModel: viewModel)
+            mySmallerLabel.text = "kg \(viewModel.price) ₸"
         }
+        
+        
         
        
         
@@ -142,8 +144,8 @@ class PhotoCollectionViewCell: UICollectionViewCell {
         myButton.frame = buttonsConstraint
         
         mySmallerLabel.frame = CGRect(x: 5, y: contentView.frame.size.height-65, width: contentView.frame.size.height - 10, height: 50)
-        myLabel.frame = CGRect(x: 5, y: contentView.frame.size.height-75, width: contentView.frame.size.height - 10, height: 50)
-        myImageView.frame = CGRect(x: 5, y: 0, width: contentView.frame.size.height - 10, height: contentView.frame.size.height - 50)
+        myLabel.frame = CGRect(x: 5, y: contentView.frame.size.height-82, width: contentView.frame.size.height - 10, height: 50)
+        myImageView.frame = CGRect(x: 5, y: 0, width: contentView.frame.size.height - 5, height: contentView.frame.size.height - 60)
     }
     
 

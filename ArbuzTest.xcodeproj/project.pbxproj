@@ -20,6 +20,7 @@
 		7ED5BC5F2A1641C2002620F4 /* PhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ED5BC5E2A1641C1002620F4 /* PhotoCollectionViewCell.swift */; };
 		7ED5BC602A17B2F4002620F4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ED5BC462A1629C5002620F4 /* ViewController.swift */; };
 		7EF74EA22A1BD25A005490C6 /* PhotoCollectionViewCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF74EA12A1BD25A005490C6 /* PhotoCollectionViewCellModel.swift */; };
+		7EF74EA42A1CB975005490C6 /* CartTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF74EA32A1CB975005490C6 /* CartTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		7ED5BC582A162E63002620F4 /* ProductsData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsData.swift; sourceTree = "<group>"; };
 		7ED5BC5E2A1641C1002620F4 /* PhotoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCollectionViewCell.swift; sourceTree = "<group>"; };
 		7EF74EA12A1BD25A005490C6 /* PhotoCollectionViewCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCollectionViewCellModel.swift; sourceTree = "<group>"; };
+		7EF74EA32A1CB975005490C6 /* CartTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartTableViewCell.swift; sourceTree = "<group>"; };
 		D88B765312C4167739336DCE /* Pods_ArbuzTest.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ArbuzTest.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FEB124014C0412C528B494B5 /* Pods-ArbuzTest.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ArbuzTest.release.xcconfig"; path = "Target Support Files/Pods-ArbuzTest/Pods-ArbuzTest.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -115,6 +117,7 @@
 		7EF74E9F2A1A7027005490C6 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				7EF74EA32A1CB975005490C6 /* CartTableViewCell.swift */,
 				7ED5BC5E2A1641C1002620F4 /* PhotoCollectionViewCell.swift */,
 				7ED5BC4D2A1629C7002620F4 /* LaunchScreen.storyboard */,
 				7ED5BC482A1629C5002620F4 /* Main.storyboard */,
@@ -255,6 +258,7 @@
 				7ED5BC432A1629C5002620F4 /* AppDelegate.swift in Sources */,
 				7ED5BC572A162CFB002620F4 /* APICaller.swift in Sources */,
 				7ED5BC452A1629C5002620F4 /* SceneDelegate.swift in Sources */,
+				7EF74EA42A1CB975005490C6 /* CartTableViewCell.swift in Sources */,
 				7E634D652A1A6B8800FA2D30 /* ProfileViewController.swift in Sources */,
 				7ED5BC5F2A1641C2002620F4 /* PhotoCollectionViewCell.swift in Sources */,
 			);

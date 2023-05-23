@@ -2,9 +2,9 @@ import UIKit
 
 
 
-protocol ViewControllerDelegate: AnyObject{
-    func moveToCart(with viewModels: [PhotoCollectionViewCellModel])
-}
+
+var selectedProducts = [PhotoCollectionViewCellModel]()
+
 
 
 class ViewController: UIViewController {
@@ -16,8 +16,8 @@ class ViewController: UIViewController {
     private var products = [Product]()
     private var viewModels = [PhotoCollectionViewCellModel]()
     private var collectionView: UICollectionView?
-    public var selectedProducts = [PhotoCollectionViewCellModel]()
-    weak var delegate: ViewControllerDelegate?
+    
+
     
     // View Controller Lifecycle Methods
     
@@ -25,24 +25,21 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         
-    
-  
-        
         title = "Home"
         
         self.navigationItem.title = "arbuz kz 🍉"
-        
-        
-  
+    
+
         
         setupCollectionView()
         setupNavigationBar()
         setupSearchController()
         fetchProducts()
         
-        print(products)
+        
     }
 }
+
 
 
 
@@ -195,21 +192,26 @@ extension ViewController {
 extension ViewController: PhotoCollectionViewCellDelegate{
     func saveToCart(viewModel: PhotoCollectionViewCellModel) {
         
+        
+        
         if selectedProducts.contains(where: {$0.label == viewModel.label}){
             if let index = selectedProducts.firstIndex(where: { $0.label == viewModel.label }) {
+                
                 selectedProducts[index] = viewModel
             }
         }else{
             selectedProducts.append(viewModel)
         }
- 
-
-        delegate?.moveToCart(with: viewModels)
+        
+        
+         
         
     }
     
     
 }
+
+
 
 
 
