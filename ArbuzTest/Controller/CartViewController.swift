@@ -7,6 +7,27 @@ class CartViewController: UIViewController {
     private var tableView = UITableView()
     
 
+    private let bottomView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .white
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
+    private let checkoutButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setTitle("Checkout", for: .normal)
+        button.titleLabel?.font = .boldSystemFont(ofSize: 20)
+        button.backgroundColor = .systemGreen
+        button.tintColor = .white
+        button.layer.cornerRadius = 8
+        button.clipsToBounds = true
+        button.addTarget(self, action: #selector(checkoutButtonTapped), for: .touchUpInside)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    
+    
     
     // MARK: - Lifecycle Methods
     
@@ -15,6 +36,7 @@ class CartViewController: UIViewController {
         
         configureTableView()
         configureNavigationItem()
+        configureBottomView()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -30,6 +52,33 @@ class CartViewController: UIViewController {
     }
     
     // MARK: - Private Methods
+    
+    
+    
+    
+    private func configureBottomView() {
+        view.addSubview(bottomView)
+        bottomView.addSubview(checkoutButton)
+
+        NSLayoutConstraint.activate([
+            bottomView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            bottomView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            bottomView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            bottomView.heightAnchor.constraint(equalToConstant: 80),
+            
+            checkoutButton.centerXAnchor.constraint(equalTo: bottomView.centerXAnchor),
+            checkoutButton.centerYAnchor.constraint(equalTo: bottomView.centerYAnchor),
+            checkoutButton.widthAnchor.constraint(equalToConstant: 200),
+            checkoutButton.heightAnchor.constraint(equalToConstant: 50),
+        ])
+    }
+    
+    @objc private func checkoutButtonTapped() {
+        let checkoutVC = CheckoutViewController()
+        
+        self.present(checkoutVC, animated: true)
+    }
+
     
     private func configureTableView() {
         tableView.allowsSelection = false

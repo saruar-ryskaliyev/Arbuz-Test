@@ -4,7 +4,7 @@ import UIKit
 
 
 var selectedProducts = [PhotoCollectionViewCellModel]()
-
+var orderedProducts = [OrderedProduct]()
 
 
 class ViewController: UIViewController {
@@ -18,8 +18,7 @@ class ViewController: UIViewController {
     private var collectionView: UICollectionView?
     
 
-    
-    // View Controller Lifecycle Methods
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -61,7 +60,7 @@ extension ViewController: UISearchBarDelegate, UISearchResultsUpdating {
     }
     
     func updateSearchResults(for searchController: UISearchController) {
-       // Update search results based on the search text entered by the user.
+
         let searchText = searchController.searchBar.text!
         if !searchText.isEmpty{
             searching = true
@@ -98,7 +97,7 @@ extension ViewController: UISearchBarDelegate, UISearchResultsUpdating {
 extension ViewController {
     
     func setupNavigationBar() {
-        // Customize the appearance of the navigation bar.
+   
         let appearance = UINavigationBarAppearance()
         appearance.titleTextAttributes = [.foregroundColor: UIColor(red: 0.10, green: 0.67, blue: 0.29, alpha: 1.00)]
         appearance.largeTitleTextAttributes = [.foregroundColor: UIColor(red: 0.10, green: 0.67, blue: 0.29, alpha: 1.00)]
@@ -113,7 +112,7 @@ extension ViewController {
 extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        // Return the number of items to be displayed in the collection view.
+
         if searching == false{
             return viewModels.count
         }else{
@@ -124,7 +123,7 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        // Configure and return the cell to be displayed for the given item.
+
         
         
         if searching == false{
@@ -144,7 +143,7 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     }
     
     func setupCollectionView() {
-        // Configure the collection view.
+    
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
         layout.minimumLineSpacing = 1
@@ -168,7 +167,7 @@ extension ViewController {
     
     
     private func fetchProducts() {
-        // Fetch products from the API and update the view models.
+       
         APICaller.shared.parse { [weak self] result in
             switch result{
             case .success(let products):
