@@ -1,4 +1,5 @@
 import UIKit
+import SnapKit
 
 class CartViewController: UIViewController {
     
@@ -14,7 +15,7 @@ class CartViewController: UIViewController {
         return view
     }()
     
-    private let checkoutButton: UIButton = {
+    private lazy var checkoutButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Checkout", for: .normal)
         button.titleLabel?.font = .boldSystemFont(ofSize: 20)
@@ -37,6 +38,7 @@ class CartViewController: UIViewController {
         configureTableView()
         configureNavigationItem()
         configureBottomView()
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -53,24 +55,27 @@ class CartViewController: UIViewController {
     
     // MARK: - Private Methods
     
-    
-    
-    
+
     private func configureBottomView() {
         view.addSubview(bottomView)
         bottomView.addSubview(checkoutButton)
-
-        NSLayoutConstraint.activate([
-            bottomView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            bottomView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            bottomView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
-            bottomView.heightAnchor.constraint(equalToConstant: 80),
-            
-            checkoutButton.centerXAnchor.constraint(equalTo: bottomView.centerXAnchor),
-            checkoutButton.centerYAnchor.constraint(equalTo: bottomView.centerYAnchor),
-            checkoutButton.widthAnchor.constraint(equalToConstant: 200),
-            checkoutButton.heightAnchor.constraint(equalToConstant: 50),
-        ])
+        
+       
+        bottomView.snp.makeConstraints { make in
+            make.centerX.equalTo(view)
+            make.centerY.equalTo(view).offset(300)
+            make.width.equalTo(150)
+            make.height.equalTo(50)
+        }
+        
+        checkoutButton.snp.makeConstraints { make in
+            make.centerX.equalTo(bottomView.snp.centerX)
+            make.centerY.equalTo(view).offset(300)
+            make.height.equalTo(50)
+            make.width.equalTo(150)
+        }
+        
+        
     }
     
     @objc private func checkoutButtonTapped() {
@@ -92,6 +97,7 @@ class CartViewController: UIViewController {
     private func configureNavigationItem() {
         title = "Cart"
         navigationItem.title = "Cart 🛒"
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Delete all", style: .done, target: self, action: #selector(deletePressed))
     }
     
 }
@@ -127,4 +133,15 @@ extension CartViewController: CartTableViewCellDelegate {
         tableView.reloadData()
     }
     
+}
+
+
+extension CartViewController{
+    @objc func deletePressed(){
+        selectedProducts.removeAll()
+        
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
+    }
 }

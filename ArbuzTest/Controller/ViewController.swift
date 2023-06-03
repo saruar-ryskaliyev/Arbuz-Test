@@ -4,7 +4,7 @@ import UIKit
 
 
 var selectedProducts = [PhotoCollectionViewCellModel]()
-var orderedProducts = [OrderedProduct]()
+var orderedProductsList = [[PhotoCollectionViewCellModel]]()
 
 
 class ViewController: UIViewController {

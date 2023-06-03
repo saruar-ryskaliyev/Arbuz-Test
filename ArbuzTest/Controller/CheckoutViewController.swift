@@ -13,18 +13,19 @@ class CheckoutViewController: UIViewController {
     private let timePicker = UIDatePicker()
     private let frequencySegmentedControl = UISegmentedControl(items: ["1 week", "2 weeks", "1 month"])
     private let checkOutButton = UIButton()
-    
-    
+
     // MARK: - Lifecycle Methods
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         configureUI()
     }
-    
+
     // MARK: - Private Methods
     
+    
+
+
     private func configureUI() {
         view.backgroundColor = .white
         title = "Checkout"
@@ -33,122 +34,112 @@ class CheckoutViewController: UIViewController {
         phoneNumberTextField.keyboardType = .phonePad
         phoneNumberTextField.borderStyle = .roundedRect
         phoneNumberTextField.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(phoneNumberTextField)
-        
-        
-        
-        
+
+        streetTextField.placeholder = "Street"
+        streetTextField.borderStyle = .roundedRect
+        streetTextField.translatesAutoresizingMaskIntoConstraints = false
+
+        numberTextField.placeholder = "Number"
+        numberTextField.keyboardType = .numberPad
+        numberTextField.borderStyle = .roundedRect
+        numberTextField.translatesAutoresizingMaskIntoConstraints = false
+
+        floorTextField.placeholder = "Floor"
+        floorTextField.keyboardType = .numberPad
+        floorTextField.borderStyle = .roundedRect
+        floorTextField.translatesAutoresizingMaskIntoConstraints = false
+
+        flatNumberTextField.placeholder = "Flat"
+        flatNumberTextField.keyboardType = .numberPad
+        flatNumberTextField.borderStyle = .roundedRect
+        flatNumberTextField.translatesAutoresizingMaskIntoConstraints = false
+
+        datePicker.datePickerMode = .date
+        datePicker.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(datePicker)
+
+        timePicker.datePickerMode = .time
+        timePicker.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(timePicker)
+
+        frequencySegmentedControl.selectedSegmentIndex = 0
+        frequencySegmentedControl.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(frequencySegmentedControl)
+
         checkOutButton.setTitle("Checkout", for: .normal)
         checkOutButton.backgroundColor = .systemGreen
         checkOutButton.layer.cornerRadius = 10
         checkOutButton.addTarget(self, action: #selector(placeOrder), for: .touchUpInside)
         checkOutButton.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(checkOutButton)
-        
-        NSLayoutConstraint.activate([
-            checkOutButton.topAnchor.constraint(equalTo: view.bottomAnchor, constant: -100),
-            checkOutButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            checkOutButton.widthAnchor.constraint(equalToConstant: 200),
-            checkOutButton.heightAnchor.constraint(equalToConstant: 50)
-        ])
-        
-        NSLayoutConstraint.activate([
-            phoneNumberTextField.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
-            phoneNumberTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            phoneNumberTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-            phoneNumberTextField.heightAnchor.constraint(equalToConstant: 40)
-        ])
-        
 
-        streetTextField.placeholder = "Street"
-        streetTextField.borderStyle = .roundedRect
-        streetTextField.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(phoneNumberTextField)
         view.addSubview(streetTextField)
-        
-        NSLayoutConstraint.activate([
-            streetTextField.topAnchor.constraint(equalTo: phoneNumberTextField.bottomAnchor, constant: 20),
-            streetTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            streetTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-            streetTextField.heightAnchor.constraint(equalToConstant: 40)
-        ])
-        
-
-        numberTextField.placeholder = "Number"
-        numberTextField.keyboardType = .numberPad
-        numberTextField.borderStyle = .roundedRect
-        numberTextField.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(numberTextField)
-        
-        NSLayoutConstraint.activate([
-            numberTextField.topAnchor.constraint(equalTo: streetTextField.bottomAnchor, constant: 20),
-            numberTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            numberTextField.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.3),
-            numberTextField.heightAnchor.constraint(equalToConstant: 40)
-        ])
-
-        floorTextField.placeholder = "Floor"
-        floorTextField.keyboardType = .numberPad
-        floorTextField.borderStyle = .roundedRect
-        floorTextField.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(floorTextField)
-        
-        NSLayoutConstraint.activate([
-            floorTextField.topAnchor.constraint(equalTo: streetTextField.bottomAnchor, constant: 20),
-            floorTextField.leadingAnchor.constraint(equalTo: numberTextField.trailingAnchor, constant:20),
-            floorTextField.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.3),
-            floorTextField.heightAnchor.constraint(equalToConstant: 40)
-        ])
-        
-        
-        flatNumberTextField.placeholder = "Flat number"
-        flatNumberTextField.keyboardType = .numberPad
-        flatNumberTextField.borderStyle = .roundedRect
-        flatNumberTextField.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(flatNumberTextField)
-        
-        NSLayoutConstraint.activate([
-            flatNumberTextField.topAnchor.constraint(equalTo: streetTextField.bottomAnchor, constant: 20),
-            flatNumberTextField.leadingAnchor.constraint(equalTo: floorTextField.trailingAnchor, constant: 20),
-            flatNumberTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-            flatNumberTextField.heightAnchor.constraint(equalToConstant: 40)
-        ])
-        
-     
-        datePicker.datePickerMode = .date
-        datePicker.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(datePicker)
-        
-        NSLayoutConstraint.activate([
-            datePicker.topAnchor.constraint(equalTo: numberTextField.bottomAnchor, constant: 20),
-            datePicker.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            datePicker.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-            datePicker.heightAnchor.constraint(equalToConstant: 200)
-        ])
-        
-  
-        timePicker.datePickerMode = .time
-        timePicker.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(timePicker)
-        
-        NSLayoutConstraint.activate([
-            timePicker.topAnchor.constraint(equalTo: datePicker.bottomAnchor, constant: -100),
-            timePicker.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            timePicker.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-            timePicker.heightAnchor.constraint(equalToConstant: 200)
-        ])
-        
-  
-        frequencySegmentedControl.selectedSegmentIndex = 0
-        frequencySegmentedControl.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(frequencySegmentedControl)
-        
-        NSLayoutConstraint.activate([
-            frequencySegmentedControl.topAnchor.constraint(equalTo: timePicker.bottomAnchor, constant: -50),
-            frequencySegmentedControl.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            frequencySegmentedControl.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-            frequencySegmentedControl.heightAnchor.constraint(equalToConstant: 40)
-        ])
+
+        phoneNumberTextField.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(10)
+            make.leading.equalTo(20)
+            make.trailing.equalTo(-20)
+            make.height.equalTo(40)
+            make.width.equalTo(view.frame.width).offset(-100)
+        }
+
+        streetTextField.snp.makeConstraints { make in
+            make.top.equalTo(phoneNumberTextField.snp.bottomMargin).offset(20)
+            make.leading.equalTo(20)
+            make.trailing.equalTo(-20)
+            make.height.equalTo(40)
+            make.width.equalTo(view.frame.width)
+        }
+
+        numberTextField.snp.makeConstraints { make in
+            make.top.equalTo(streetTextField.snp.bottomMargin).offset(20)
+            make.leading.equalTo(20)
+            make.height.equalTo(40)
+            make.width.equalTo((view.bounds.width - (4 * 10)) / 3)
+        }
+
+        floorTextField.snp.makeConstraints { make in
+            make.top.equalTo(streetTextField.snp.bottomMargin).offset(20)
+            make.leading.equalTo(numberTextField.snp.trailing).offset(10)
+            make.height.equalTo(40)
+            make.width.equalTo((view.bounds.width - (4 * 10)) / 3)
+        }
+
+        flatNumberTextField.snp.makeConstraints { make in
+            make.top.equalTo(streetTextField.snp.bottomMargin).offset(20)
+            make.leading.equalTo(floorTextField.snp.trailing).offset(10)
+            make.height.equalTo(40)
+            make.trailing.equalTo(streetTextField.snp.trailing)
+            make.width.equalTo((view.bounds.width - (4 * 10)) / 3)
+        }
+
+        checkOutButton.snp.makeConstraints { make in
+            make.top.equalTo(view.snp.bottomMargin).offset(-100)
+            make.centerX.equalToSuperview()
+            make.width.equalTo(200)
+            make.height.equalTo(50)
+        }
+
+        datePicker.snp.makeConstraints { make in
+            make.leading.equalTo(phoneNumberTextField)
+            make.top.equalTo(numberTextField.snp.bottomMargin).offset(20)
+        }
+
+        timePicker.snp.makeConstraints { make in
+            make.leading.equalTo(datePicker.snp.trailingMargin).offset(10)
+            make.top.equalTo(numberTextField.snp.bottomMargin).offset(20)
+        }
+
+        frequencySegmentedControl.snp.makeConstraints { make in
+            make.top.equalTo(datePicker.snp.bottomMargin).offset(20)
+            make.leading.equalTo(phoneNumberTextField)
+        }
     }
+
     
     // MARK: - Validation Methods
     
@@ -187,6 +178,11 @@ class CheckoutViewController: UIViewController {
         let selectedTime = timePicker.date
         let selectedFrequencyIndex = frequencySegmentedControl.selectedSegmentIndex
         let selectedFrequency: String
+        
+        orderedProductsList.append(selectedProducts)
+        selectedProducts.removeAll()
+        
+        
         switch selectedFrequencyIndex {
         case 0:
             selectedFrequency = "1 week"

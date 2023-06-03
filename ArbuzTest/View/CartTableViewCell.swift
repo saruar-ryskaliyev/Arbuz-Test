@@ -7,6 +7,7 @@
 
 import UIKit
 import GMStepper
+import SnapKit
 
 
 protocol CartTableViewCellDelegate: AnyObject{
@@ -108,33 +109,37 @@ class CartTableViewCell: UITableViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        myLabel.frame = CGRect(
-            x: 100,
-            y: 0,
-            width: contentView.frame.size.width - 170,
-            height: 70
-        )
+        myImageView.snp.makeConstraints { make in
+            make.left.equalTo(self.snp.left).offset(20)
+            make.centerY.equalToSuperview()
+            make.width.equalTo(65)
+            make.height.equalTo(65)
+        }
         
-        mySmallerLabel.frame = CGRect(
-            x: 235,
-            y: 0,
-            width: contentView.frame.size.width - 170,
-            height: 70
-        )
-
+        myLabel.snp.makeConstraints { make in
+            make.left.equalTo(myImageView.snp.right).offset(10)
+            make.centerY.equalToSuperview()
+            make.width.equalTo(self.contentView.frame.size.width - 300)
+            make.height.equalTo(70)
+            
+        }
         
-        myImageView.frame = CGRect(
-            x: 10,
-            y: 0,
-            width: 65,
-            height: contentView.frame.size.height
-        )
+        mySmallerLabel.snp.makeConstraints { make in
+            make.left.equalTo(myLabel.snp.right).offset(20)
+            make.centerY.equalToSuperview()
+            make.width.equalTo(self.contentView.frame.size.width - 300)
+            make.height.equalTo(70)
+        }
+    
         
-        MyGMStepper.frame =  CGRect(
-            x: 330,
-            y: contentView.frame.size.height - 55,
-            width: contentView.frame.size.height,
-            height: 50)
+        MyGMStepper.snp.makeConstraints { make in
+            make.left.equalTo(mySmallerLabel.snp.right).offset(10)
+            make.centerY.equalToSuperview()
+            make.width.equalTo(self.contentView.frame.size.height)
+            make.height.equalTo(50)
+            
+        }
+        
 
     }
     
