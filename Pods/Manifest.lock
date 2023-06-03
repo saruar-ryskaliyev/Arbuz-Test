@@ -1,16 +1,20 @@
 PODS:
   - GMStepper (2.2)
+  - SnapKit (5.0.1)
 
 DEPENDENCIES:
   - GMStepper
+  - SnapKit (~> 5.0.0)
 
 SPEC REPOS:
   trunk:
     - GMStepper
+    - SnapKit
 
 SPEC CHECKSUMS:
   GMStepper: 89fb106944dfcc3aa3add7164e3ebd463ea2104b
+  SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
 
-PODFILE CHECKSUM: 3eecfdf84295ddbde391c334acf72583e6b8eed1
+PODFILE CHECKSUM: f2807e3390b539a53d1c7f8a8c5dbe8e3b96e453
 
 COCOAPODS: 1.12.0

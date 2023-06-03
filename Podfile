@@ -7,6 +7,7 @@ target 'ArbuzTest' do
   
 
   pod "GMStepper"
+  pod 'SnapKit', '~> 5.0.0'
   # Pods for ArbuzTest
 
 
